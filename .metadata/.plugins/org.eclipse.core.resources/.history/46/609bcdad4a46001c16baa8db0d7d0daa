@@ -1,0 +1,40 @@
+
+public class Dever2{
+	
+	private static int cpf;
+	
+	Dever2(int i){cpf=i;}
+	
+	public static void main(String[] args) {
+		int teste;
+		try {
+			teste = digitosVerificadores();
+			if(teste < 0 || teste > 999999999) {
+				throw new IndexOutOfBoundsException();
+			}
+			} catch (IndexOutOfBoundsException ex) {
+				System.out.println("Error: Número menor que 0 ou maior de 999999999");
+			}
+	}
+	
+	public static int digitosVerificadores(){
+		return digsVer(cpf);
+	}
+	
+	
+	private static int digsVer(int n){
+		int[] d=new int[9];
+		int aux=n;
+		int i;
+		for(i=0; i<9; i++){ d[i]=aux%10; aux=aux/10;}
+		int somaprod=0;
+		for(i=0; i<9; i++)somaprod+=d[i]*(i+2);
+		int dvDez=11-somaprod%11;
+		if(dvDez>9) dvDez=0;
+		somaprod=dvDez*2;
+		for(i=0; i<9; i++)somaprod+=d[i]*(i+3);
+		int dvUni=11-somaprod%11;
+		if(dvUni>9) dvUni=0;
+		return dvDez*10+dvUni;
+	}
+}

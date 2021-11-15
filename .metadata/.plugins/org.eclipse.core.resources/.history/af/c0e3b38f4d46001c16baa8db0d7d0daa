@@ -1,0 +1,14 @@
+package javateste;
+
+import java.io.FileInputStream;
+
+public class Programa1 {
+	
+	FileInputStream inputStream = new FileInputStream("dados.txt");
+    try {
+        String texto = IOUtils.toString(inputStream);
+    } finally {
+        inputStream.close();
+    }
+	
+}

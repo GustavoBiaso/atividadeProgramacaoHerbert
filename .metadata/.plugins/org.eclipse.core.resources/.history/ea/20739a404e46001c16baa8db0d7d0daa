@@ -1,0 +1,18 @@
+package javateste;
+
+import java.io.*;
+
+public class Programa1 {
+	
+	public static void main(String args[]) throws IOException {
+        FileInputStream stream = new FileInputStream("./dados.txt");
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader br = new BufferedReader(reader);
+        String linha = br.readLine();
+        while(linha != null) {
+            System.out.println(linha);
+            linha = br.readLine();
+        }
+    }
+	
+}

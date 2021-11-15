@@ -1,0 +1,40 @@
+package javateste;
+
+import java.io.*;
+import java.util.Arrays;
+
+public class Programa2 {
+
+	public static void main(String args[]) throws IOException {
+		//Localizando o Arquivo (Colocando seu path)
+        FileInputStream stream = new FileInputStream("C:\\Users\\Gustavo\\Desktop\\Arquivos do Pc\\Escola Deveres\\3° Ano\\AplicaçõesMóveis\\dados.txt");
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader br = new BufferedReader(reader);
+        String linha = br.readLine();
+        
+        //Recebendo os Inputs do arquivo
+        String input1 = linha;
+        linha = br.readLine();
+        String [] input1Separado = input1.split(" ");
+        String [] input = new String[Integer.parseInt(input1Separado[1])];
+        int i = -1;        
+        while(linha != null) {
+        	i = i + 1;
+            input[i] = linha;
+            linha = br.readLine();
+        }
+        
+        //Funcionamento do programa
+        int [] vendedores = new int [Integer.parseInt(input1Separado[0])];
+        for(int j=0; j < vendedores.length;j++) {
+        	try {
+        		if(vendedores[j] == 0) {
+        			vendedores[j] = Integer.parseInt(input[j]);
+        		}
+        		System.out.println(vendedores[j]);
+        	} catch (Exception e) {
+        	      System.out.println("Something went wrong.");
+            }
+        }
+	}
+}
